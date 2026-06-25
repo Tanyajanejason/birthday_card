@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            <h1> Birthday Card </h1>
+        </title>
+        <style>
+            body { 
+                margin:0;
+            overflow:hidden;
+        }
+         #bg {
+            width:100vw;
+            height:100vh;
+            object-fit:fill;
+        }
+        #nextbtn {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+
+    width: 100px;
+    cursor: pointer;
+}
+#yesbtn {
+    position: fixed;
+    bottom: 250px;
+    left: 40%;
+    z-index: 1000;
+}
+
+#nobtn {
+    position: fixed;
+    bottom: 250px;
+    left: 55%;
+    z-index: 1000;
+}
+
+#yesbtn,
+#nobtn {
+    font-size: 24px;
+    padding: 15px 30px;
+}
+
+#meme{
+    
+    position: fixed;
+    top: 120px;
+    left: 500px;
+
+    width: 350px;
+    height: 350px;
+
+    object-fit: contain;
+
+}
+
+#nextmeme{
+    position:fixed;
+    bottom:50px;
+    right:50px;
+    z-index:1000;
+}
+        
+        </style>
+    </head>
+
+    
+
+
+        <body>
+            <div id="pg1">
+                <img id="bg" src ="images/bg1.png">
+                <img id="nextbtn" src="images/nextpg.png">
+            </div>
+
+            <div id="pg2" style="display:none;">
+                <img id="bg" src="images/bg2.png">
+                <button id="yesbtn">YES</button>
+                <button id="nobtn">NO</button>
+
+            </div>
+
+            <div id="pg3" style="display:none;">
+                <img id="bg" src="images/bg3.png">
+                <img id="meme" src="images/meme1.jpg">
+                <button id="nextmeme">Next </button>
+            </div>
+
+            <div id="pg4" style="display:none;">
+            <img id="bg" src="images/bg4.png">
+        </div>
+            
+
+
+
+            <script>
+        document.getElementById("nextbtn").onclick=function()
+        {
+            document.getElementById("pg1").style.display="none";
+            document.getElementById("pg2").style.display="block";
+        }
+        const yesbtn=document.getElementById("yesbtn");
+        const nobtn=document.getElementById("nobtn");
+        let scale=1;
+
+        nobtn.onclick=function()
+        {
+            scale=scale+0.5;
+            yesbtn.style.transform=`scale(${scale})`;
+
+        };
+        yesbtn.onclick=function()
+        {
+            
+            document.getElementById("pg2").style.display="none";
+            document.getElementById("pg3").style.display="block";
+        };
+        
+        const memes=[
+            "images/meme1.jpg","images/meme2.png","images/meme3.jpg","images/meme4.png"
+    ];
+    let current=0;
+    nextmeme.onclick=function()
+    {
+        current++;
+        if(current<memes.length)
+    {
+        meme.src=memes[current];
+    }
+    else{
+        document.getElementById("pg3").style.display="none";
+        document.getElementById("pg4").style.display="block";
+    }
+}
+    </script>
+
+        </body>
+</html>
